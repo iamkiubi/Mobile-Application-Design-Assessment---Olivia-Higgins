@@ -1,0 +1,51 @@
+   
+    .map-content {
+        z-index:99999;
+        width: 100vw;
+        height: 100%;
+      }
+      
+    
+      
+      .page-content {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+      }
+      
+      
+      .pageweather{      
+        width: auto;
+        height: 100%;
+      
+      }
+        
+      .pagehome{
+        
+        width: auto;
+        height: 100%;
+    
+      }
+
+      .leaflet-control-container .leaflet-routing-alt {
+        display: none;
+    }
+
+    .alert-wrapper {
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+
+    .con-del-button {
+      position: absolute;
+      bottom: 0px;
+      margin-left: auto;
+      margin-right: auto;
+      margin-bottom: auto;
+      width: 100% !important;
+    }
+
+    .con-del-button ion-button {
+      width: 100%;
+    }

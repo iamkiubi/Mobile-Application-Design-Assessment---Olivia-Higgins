@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="description" content="Weather App">
+
+
+  <!--  allows us to use of the Ionic Framework core components and CSS bundle-->
+  <script type="module" src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.esm.js"></script>
+  <script nomodule src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ionic/core/css/ionic.bundle.css" />
+
+
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+  integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+  crossorigin=""/>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
+  <!-- Make sure you put this AFTER Leaflet's CSS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+      crossorigin=""></script>
+  <script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
+  <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+  <script src="apiKey.js"></script>
+  <script src="app.js" defer></script>
+
+  <link rel="stylesheet" href="index.css"/>
+
+
+</head>
+
+
+
+
+<body>
+  <ion-app>
+
+    <ion-tabs>
+        <!----------------------------------------------------------------------->
+        <ion-tab tab="Vehicle">
+            <ion-nav id="v-nav"></ion-nav>
+            <div id="v-page">
+              <ion-header>
+                <ion-toolbar color="success">
+                  <ion-title>Map</ion-title>
+                </ion-toolbar> 
+              </ion-header>
+            
+              <!--content fills the space between a header and footer-->
+              <ion-card>
+                <ion-select id="make-select" class="ion-text-wrap" interface="popover" placeholder="select car" onclick="accessMakes()"></ion-select>
+                <ion-select id="model-select" class="ion-text-wrap" interface="popover" placeholder="select model"></ion-select>
+              </ion-card>
+            </div>
+        </ion-tab>
+
+        <!-- tab page for Map -->
+        <ion-tab tab="Map">
+          <ion-nav id="map-nav"></ion-nav>
+          <div id="map-page">
+            <ion-header>
+              <ion-toolbar color="success">
+                <ion-title>Map</ion-title>
+              </ion-toolbar> 
+            </ion-header>
+          
+            <!--content fills the space between a header and footer-->
+            <ion-content fullscreen="true">
+              <div class = "map-content" id="map"></div>
+            </ion-content>
+
+            <ion-card>
+              <ion-card-content>
+                <ion-list>
+                  <ion-item>
+                    <ion-label id="route-distance">Distance: </ion-label>
+                  </ion-item>
+                  <ion-item>
+                    <ion-label id="route-time">Time: </ion-label>
+                  </ion-item>
+                  <ion-item>
+                    <ion-label id="route-emissions">Emissions: </ion-label>
+                  </ion-item>
+                </ion-list>
+                <ion-button id="save-button" onclick="saveRoute()">Save to Favourites</ion-button>
+              </ion-card-content>
+            </ion-card>
+          </div>
+        </ion-tab>
+
+        <!----------------------------------------------------------------------->
+        <!--tab page for favourites-->
+        <ion-tab tab="Favourites">
+          <ion-nav id="saved-nav"></ion-nav>
+          <div id="saved-page">
+            <ion-header>
+              <ion-toolbar color="success">
+                <ion-title>Saved Routes</ion-title>
+              </ion-toolbar> 
+            </ion-header>
+            
+            <ion-content fullscreen="true">
+              <ion-card>
+                <ion-list id="save-output"></ion-list>
+              </ion-card>
+            </ion-content>
+
+            <ion-card class="con-del-button">
+              <ion-button onclick="deleteActivate()">delete route</ion-button>
+            </ion-card>
+
+          </div>
+        </ion-tab>
+         
+        <!----------------------------------------------------------------------->
+        <!--tab bar-->
+        <ion-tab-bar slot="bottom"> 
+          <ion-tab-button tab="Vehicle">  
+            <h3>Vehicle</h3>
+          </ion-tab-button>
+
+          <!--icon button map-->
+          <ion-tab-button tab="Map">  
+            <h3>Map</h3>
+          </ion-tab-button>
+
+          <!--icon button favourites-->
+          <ion-tab-button tab="Favourites">  
+              <h3>Favourites</h3>
+          </ion-tab-button>
+
+        </ion-tab-bar>
+        <!----------------------------------------------------------------------->
+      </ion-tabs>
+
+    </ion-app>
+</body>
+</html>
