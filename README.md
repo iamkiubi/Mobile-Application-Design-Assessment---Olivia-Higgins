@@ -1,4 +1,4 @@
-# Mobile Application Design Assessment - Olivia-Higgins
+# Mobile Application Design Assessment - Olivia Higgins
 App Functionality
 -
 - Allows user to select a vehicle from a wide variety of manufacturers and models
